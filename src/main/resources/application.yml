@@ -1,0 +1,17 @@
+meta:
+  business:
+    phone-number-id: YOUR_PHONE_NUMBER_ID
+    access-token: YOUR_ACCESS_TOKEN
+
+twilio:
+  account-sid: YOUR_ACCOUNT_SID
+  auth-token: YOUR_AUTH_TOKEN
+  from-number: YOUR_TWILIO_WHATSAPP_OR_SMS_NUMBER
+
+gupshup:
+  api-key: YOUR_GUPSHUP_API_KEY
+  base-url: https://api.gupshup.io/sm/api/v1
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
