@@ -1,4 +1,4 @@
-package com.example.communication.service.impl;
+package com.example.communication.service.channel.whatsapp;
 
 import com.example.communication.dto.MessageRequest;
 import com.example.communication.dto.MessageResponse;
@@ -16,13 +16,13 @@ import java.nio.charset.StandardCharsets;
 @Service
 @Order(0)
 @Slf4j
-public class GupshupService implements CommunicationService {
+public class GupshupWhatsappService implements CommunicationService {
     private final WebClient webClient;
 
     @Value("${gupshup.api-key}")
     private String apiKey;
 
-    public GupshupService(WebClient.Builder builder,
+    public GupshupWhatsappService(WebClient.Builder builder,
             @Value("${gupshup.base-url}") String baseUrl) {
         this.webClient = builder
                 .baseUrl(baseUrl)

@@ -1,4 +1,4 @@
-package com.example.communication.service.impl;
+package com.example.communication.service.channel.whatsapp;
 
 import com.example.communication.dto.MessageRequest;
 import com.example.communication.dto.MessageResponse;

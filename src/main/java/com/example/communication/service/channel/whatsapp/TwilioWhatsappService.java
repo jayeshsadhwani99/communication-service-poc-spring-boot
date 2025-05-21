@@ -1,4 +1,4 @@
-package com.example.communication.service.impl;
+package com.example.communication.service.channel.whatsapp;
 
 import com.example.communication.dto.MessageRequest;
 import com.example.communication.dto.MessageResponse;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Order(2)
 @Slf4j
-public class TwilioService implements CommunicationService {
+public class TwilioWhatsappService implements CommunicationService {
 
     @Value("${twilio.account-sid}")
     private String sid;
