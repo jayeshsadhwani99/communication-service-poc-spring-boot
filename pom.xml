@@ -9,7 +9,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.4.5</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <relativePath/>
   </parent>
 
   <groupId>com.example</groupId>
@@ -24,31 +24,40 @@
   </properties>
 
   <dependencies>
-    <!-- Spring Web MVC -->
+    <!-- Web & Reactive HTTP -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
-    <!-- Non-blocking HTTP client (WebClient) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
     </dependency>
 
-    <!-- Bean Validation (Jakarta Validation) -->
+    <!-- Validation -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
-    <!-- Actuator for health checks, metrics, etc. -->
+    <!-- Actuator -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
-    <!-- Twilio SDK for SMS/WhatsApp fallback -->
+    <!-- JPA & PostgreSQL -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Twilio SDK -->
     <dependency>
       <groupId>com.twilio.sdk</groupId>
       <artifactId>twilio</artifactId>
@@ -61,7 +70,7 @@
       </exclusions>
     </dependency>
 
-    <!-- Lombok for reducing boilerplate -->
+    <!-- Lombok (compile-only) -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -69,7 +78,7 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Developer tools for hot reload -->
+    <!-- Devtools -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
@@ -77,14 +86,14 @@
       <optional>true</optional>
     </dependency>
 
-    <!-- Configuration annotation processor -->
+    <!-- Configuration Processor -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
 
-    <!-- Testing (JUnit, Mockito, Spring Test) -->
+    <!-- Testing -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -94,7 +103,7 @@
 
   <build>
     <plugins>
-      <!-- Ensure source/target match java.version and register annotation processors -->
+      <!-- Compiler + Annotation Processors -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -117,7 +126,7 @@
         </configuration>
       </plugin>
 
-      <!-- Package as an executable Spring Boot jar -->
+      <!-- Spring Boot Repackage -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>

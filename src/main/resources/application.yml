@@ -15,3 +15,19 @@ gupshup:
 spring:
   main:
     allow-bean-definition-overriding: true
+
+  # ─── Database / JPA Configuration ────────────────────────────────────────
+  datasource:
+    url: jdbc:postgresql://localhost:5432/your_db
+    username: your_user
+    password: your_pass
+
+  jpa:
+    hibernate:
+      ddl-auto: update # auto-create/update tables
+    show-sql: true # log SQL statements
+
+logging:
+  pattern:
+    console: >-
+      %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %X{notificationId} - %msg%n
