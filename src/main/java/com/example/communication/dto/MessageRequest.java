@@ -2,7 +2,13 @@ package com.example.communication.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MessageRequest {
 
     @NotBlank
@@ -14,21 +20,7 @@ public class MessageRequest {
     @NotNull
     private Channel channel = Channel.WHATSAPP;
 
-    public enum Channel { WHATSAPP, SMS }
-
-    public MessageRequest() {}
-
-    public MessageRequest(String to, String content, Channel channel) {
-        this.to = to;
-        this.content = content;
-        this.channel = channel;
+    public enum Channel {
+        WHATSAPP, SMS
     }
-
-    // getters & setters
-    public String getTo() { return to; }
-    public void setTo(String to) { this.to = to; }
-    public String getContent() { return content; }
-    public void setContent(String content) { this.content = content; }
-    public Channel getChannel() { return channel; }
-    public void setChannel(Channel channel) { this.channel = channel; }
 }
