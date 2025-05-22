@@ -1,0 +1,40 @@
+# ─── Activate this file when "test" profile is active ────────────────
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  # ─── In-Memory H2 Setup ────────────────────────────────────────────
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  # ─── Enable H2 console for manual inspection ───────────────────────
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# ─── Dummy Provider Credentials (always fail) ───────────────────────
+gupshup:
+  api-key: invalid
+  base-url: http://localhost:9999
+
+meta:
+  business:
+    phone-number-id: invalid
+    access-token: invalid
+
+twilio:
+  account-sid: invalid
+  auth-token: invalid
+  from-number: invalid
