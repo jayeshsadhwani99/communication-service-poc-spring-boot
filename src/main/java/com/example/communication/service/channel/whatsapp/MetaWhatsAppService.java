@@ -32,8 +32,7 @@ public class MetaWhatsAppService implements CommunicationService {
 
     @Override
     public boolean supports(MessageRequest request) {
-        boolean supported = request.getChannel() == MessageRequest.Channel.WHATSAPP
-                && !request.getTo().startsWith("+91");
+        boolean supported = request.getChannel() == MessageRequest.Channel.WHATSAPP;
         log.debug("MetaWhatsAppService supports {}? {}", request.getTo(), supported);
         return supported;
     }
