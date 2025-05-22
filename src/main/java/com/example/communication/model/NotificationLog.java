@@ -1,14 +1,22 @@
 package com.example.communication.model;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 
 /**
  * Persisted log of every notification attempt.
+ *
+ * - requestPayload: full incoming DTO JSON (stored as TEXT)
+ * - responsePayload: full provider JSON response or error structure (TEXT)
+ * - status: richer enum
+ * - audit timestamps
  */
 @Entity
 @Table(name = "notification_log")
@@ -22,38 +30,38 @@ public class NotificationLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** Immutable correlation ID, returned to clients in X-Notification-Id */
+    /** Correlation ID returned to clients (X-Notification-Id) */
     @Column(nullable = false, unique = true, updatable = false)
     private String notificationId;
 
-    /** Which channel this log entry is for (WHATSAPP, SMS, EMAIL…) */
+    /** Which channel (WHATSAPP, SMS, EMAIL…) */
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Channel channel;
 
-    /** Recipient identifier, e.g. phone number or email address */
+    /** The intended recipient (phone number or email) */
     @Column(nullable = false, length = 100)
     private String recipient;
 
-    /** Rich status vs. simple boolean */
+    /** Lifecycle status (PENDING, SUCCESS, FAILED, etc.) */
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private NotificationStatus status;
 
-    /** The original outbound message text */
+    /** The original outbound message text or payload */
     @Lob
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    /** Full provider response or error details (JSON/plain text) */
-    @Lob
-    @Column(columnDefinition = "TEXT")
-    private String data;
-
-    /** Entire incoming request payload (serialized JSON) */
-    @Lob
+    /** Full incoming request DTO, serialized JSON (TEXT) */
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String requestPayload;
+    private JsonNode requestPayload;
+
+    /** Full provider response (success or error) serialized JSON (TEXT) */
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "TEXT")
+    private JsonNode responsePayload;
 
     /** When this entry was first created */
     @CreationTimestamp

@@ -5,6 +5,7 @@
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -21,6 +22,7 @@
   <properties>
     <java.version>17</java.version>
     <lombok.version>1.18.30</lombok.version>
+    <hibernate-types.version>2.16.3</hibernate-types.version>
   </properties>
 
   <dependencies>
@@ -55,6 +57,20 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
+    </dependency>
+
+    <!-- H2 for in-memory testing -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- JSON mapping support for Postgres jsonb (Hibernate 6) -->
+    <dependency>
+      <groupId>com.vladmihalcea</groupId>
+      <artifactId>hibernate-types-60</artifactId>
+      <version>${hibernate-types.version}</version>
     </dependency>
 
     <!-- Twilio SDK -->
@@ -99,18 +115,11 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-
   </dependencies>
 
   <build>
     <plugins>
-      <!-- Compiler + Annotation Processors -->
+      <!-- Compiler & Annotation Processing -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -133,7 +142,7 @@
         </configuration>
       </plugin>
 
-      <!-- Spring Boot Repackage -->
+      <!-- Spring Boot Executable Jar -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
