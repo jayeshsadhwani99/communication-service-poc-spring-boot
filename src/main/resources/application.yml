@@ -14,6 +14,7 @@ gupshup:
 
 zoho:
   api-base-url: https://www.zohoapis.com/crm/v2
+  auth-base-url: https://accounts.zoho.com/oauth/v2
   client-id: YOUR_CLIENT_ID
   client-secret: YOUR_CLIENT_SECRET
   refresh-token: YOUR_REFRESH_TOKEN
