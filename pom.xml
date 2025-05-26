@@ -86,6 +86,21 @@
       </exclusions>
     </dependency>
 
+    <!-- Apache Commons Text for placeholder substitution -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>1.10.0</version>
+    </dependency>
+
+    <!-- Caffeine for in-memory caching -->
+    <dependency>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <artifactId>caffeine</artifactId>
+      <version>3.1.6</version>
+    </dependency>
+
+
     <!-- Lombok (compile-only) -->
     <dependency>
       <groupId>org.projectlombok</groupId>

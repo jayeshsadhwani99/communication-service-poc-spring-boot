@@ -12,6 +12,12 @@ gupshup:
   api-key: YOUR_GUPSHUP_API_KEY
   base-url: https://api.gupshup.io/sm/api/v1
 
+zoho:
+  api-base-url: https://www.zohoapis.com/crm/v2
+  client-id: YOUR_CLIENT_ID
+  client-secret: YOUR_CLIENT_SECRET
+  refresh-token: YOUR_REFRESH_TOKEN
+
 spring:
   main:
     allow-bean-definition-overriding: true
