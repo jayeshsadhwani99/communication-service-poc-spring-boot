@@ -42,9 +42,12 @@ public class MetaWhatsAppService implements CommunicationService {
         try {
             Map<String, Object> payload = Map.of(
                     "messaging_product", "whatsapp",
+                    "recipient_type", "individual",
                     "to", request.getTo(),
-                    "type", "text",
-                    "text", Map.of("body", request.getContent()));
+                    "type", "template",
+                    "template", Map.of(
+                            "name", "hello_world",
+                            "language", Map.of("code", "en_US")));
 
             JsonNode resp = webClient.post()
                     .uri("/{id}/messages", phoneNumberId)
